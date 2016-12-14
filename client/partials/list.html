@@ -1,0 +1,32 @@
+<div id="form-container">
+
+  <label class="form-label">
+      Filter Birthday: <input id="type-text" type="text" ng-model="search" placeholder="filter...">
+  </label>
+  <table id="friends-table">
+    <thead>
+      <tr>
+        <th class="table-heading">
+        <a href="#!/" ng-click="sortType = 'name'; sortReverse = !sortReverse">
+        Name <span ng-show="sortType == 'name' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'name' && sortReverse" class="fa fa-caret-up"></span></a></th>
+        <th class="table-heading">
+        <a href="#!/" ng-click="sortType = 'dob'; sortReverse = !sortReverse">
+        Birthdate <span ng-show="sortType == 'dob' && !sortReverse" class="fa fa-caret-down"></span>
+        <span ng-show="sortType == 'dob' && sortReverse" class="fa fa-caret-up"></span></a></th>
+        <th class="table-heading">Show</th>
+        <th class="table-heading">Update</th>
+        <th class="table-heading">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="friend in friends | filter:{dob: search} | orderBy:sortType:sortReverse">
+        <td class="table-data">{{ friend.first_name }} {{ friend.last_name }}</td>
+        <td class="table-data">{{ friend.dob | date: "MMM-dd-yyyy" }}</td>
+        <td class="table-data"><a class="action-text" ng-href="#!/show/{{friend._id}}">Show</a></td>
+        <td class="table-data"><a class="action-text" ng-href="#!/edit/{{friend._id}}">Update</a></td>
+        <td class="table-data"><a class="action-text" href="#!/" ng-click="deleteFriend(friend._id)">Delete</a></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,28 @@
+  <h1 id="header-text">NEW FRIEND</h1>
+  <div id="form-container">
+
+    <div ng-messages="friendForm.first_name.$error">
+        <p style="color: red" ng-message="minlength">First name is too short.</p>
+        <p style="color: red" ng-message="required">First name is required.</p>
+    </div> 
+     <div ng-messages="friendForm.last_name.$error">
+        <p style="color: red" ng-message="minlength">Last name is too short.</p>
+        <p style="color: red" ng-message="required">Last name is required.</p>
+    </div> 
+         <div ng-messages="friendForm.dob.$error">
+        <p style="color: red" ng-message="required">Date of Birth is required.</p>
+    </div> 
+    <form name='friendForm' ng-submit="addFriend()" id="user-form">
+      <label class="form-label">
+        First Name: <input name="first_name" class="name-text" type="text" ng-model="newFriend.first_name" placeholder="enter first name" ng-minlength='1' required>
+      </label>
+      <label class="form-label">
+        Last Name: <input name="last_name" class="name-text" type="text" ng-model="newFriend.last_name" placeholder="enter last name" ng-minlength='1' required>
+      </label>
+      <label class="form-label">
+        DOB: <input name="dob" class="name-text" type="date" ng-model="newFriend.dob" placeholder="enter birthday" required>
+      </label>
+      <input class="btn btn-success" type="submit" value="Add Friend">
+    </form>
+
+  </div>
